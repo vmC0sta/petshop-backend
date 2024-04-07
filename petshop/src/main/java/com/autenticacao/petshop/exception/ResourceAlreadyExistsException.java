@@ -1,2 +1,9 @@
-package com.autenticacao.petshop.exception;public class ResourceAlreadyExistsException {
+package com.autenticacao.petshop.exception;
+
+public class ResourceAlreadyExistsException  extends RuntimeException{
+
+    public ResourceAlreadyExistsException(String message){
+        super(message);
+    }
+
 }

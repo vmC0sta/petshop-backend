@@ -1,4 +1,4 @@
-package com.example.projetofinal.exceptions;
+package com.autenticacao.petshop.exception;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
