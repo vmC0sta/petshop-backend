@@ -1,10 +1,8 @@
 package com.autenticacao.petshop.entity.user;
 
+import com.autenticacao.petshop.entity.client.Client;
 import jakarta.persistence.*;
 import lombok.Data;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Data
@@ -16,6 +14,8 @@ public class User {
 
     private String email;
 
-    private String senha;
+    private String password;
 
+    @OneToOne
+    private Client client;
 }
