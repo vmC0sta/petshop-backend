@@ -21,10 +21,11 @@ public class Client {
     @Column(unique = true, nullable = false)
     private String cpf;
 
-    @OneToMany
-    private List<Address> adress;
-
     @Column(unique = true, nullable = false)
     private String phone;
+
+    @PrimaryKeyJoinColumn
+    @OneToOne
+    private Address address;
 
 }

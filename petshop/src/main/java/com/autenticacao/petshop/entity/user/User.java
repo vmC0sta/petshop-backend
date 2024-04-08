@@ -16,6 +16,7 @@ public class User {
 
     private String password;
 
+    @PrimaryKeyJoinColumn
     @OneToOne
     private Client client;
 }
