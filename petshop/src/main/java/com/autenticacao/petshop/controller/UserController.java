@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/user")
 @AllArgsConstructor
@@ -39,6 +40,11 @@ public class UserController {
     public ResponseEntity<Object> delete(@PathVariable("id") Long id){
         service.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Object> createUserWithClientAndAddress(@RequestBody User user) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.createUserWithClientAndAddress(user, user.getClient(), user.getClient().getAddress()));
     }
 
 }
