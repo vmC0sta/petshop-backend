@@ -3,6 +3,7 @@ package com.autenticacao.petshop.service;
 import com.autenticacao.petshop.entity.address.Address;
 import com.autenticacao.petshop.exception.ResourceNotFoundException;
 import com.autenticacao.petshop.repository.AddressRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class AddressService implements IService<Address> {
         Optional<Address> optional = repository.findById(id);
         return optional.orElseThrow(() -> new ResourceNotFoundException("Endereço", "id",id));
     }
-
+    @Transactional
     @Override
     public Address save(Address address) {
         return repository.save(address);

@@ -1,5 +1,8 @@
 package com.autenticacao.petshop.controller;
 
+import com.autenticacao.petshop.entity.user.CreateUserRequest;
+import com.autenticacao.petshop.entity.address.Address;
+import com.autenticacao.petshop.entity.client.Client;
 import com.autenticacao.petshop.entity.user.User;
 import com.autenticacao.petshop.service.UserService;
 import lombok.AllArgsConstructor;
@@ -43,8 +46,11 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Object> createUserWithClientAndAddress(@RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.createUserWithClientAndAddress(user, user.getClient(), user.getClient().getAddress()));
+    public ResponseEntity<Object> createUserWithClientAndAddress(@RequestBody CreateUserRequest createUserRequest) {
+        User user = createUserRequest.getUser();
+        Client client = createUserRequest.getClient();
+        Address address = createUserRequest.getAddress();
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.createUserWithClientAndAddress(user, client, address));
     }
 
 }

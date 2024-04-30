@@ -34,11 +34,15 @@ public class UserService implements IService<User> {
         return optional.orElseThrow(() -> new ResourceNotFoundException("Usuário", "id", id));
     }
 
+    @Transactional
     @Override
     public User save(User user) {
+
             if (repository.findByEmail(user.getEmail()) != null) {
+
                 throw new ResourceAlreadyExistsException("Esse usuário já existe");
             }
+
             return repository.save(user);
     }
 
@@ -49,7 +53,6 @@ public class UserService implements IService<User> {
         if (existingUser != null && !existingUser.getId().equals(id)) {
             throw new ResourceAlreadyExistsException("Esse usuário já existe");
         }
-
         User user = findById(id);
         newUser.setId(user.getId());
         mapper.map(newUser,user);
@@ -69,4 +72,6 @@ public class UserService implements IService<User> {
         user.setClient(client);
         return save(user);
     }
+
+
 }

@@ -5,6 +5,7 @@ import com.autenticacao.petshop.entity.user.User;
 import com.autenticacao.petshop.exception.ResourceAlreadyExistsException;
 import com.autenticacao.petshop.exception.ResourceNotFoundException;
 import com.autenticacao.petshop.repository.ClientRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,7 @@ public class ClientService implements IService<Client> {
         return optional.orElseThrow(() -> new ResourceNotFoundException("Cliente", "id", id));
     }
 
+    @Transactional
     @Override
     public Client save(Client client) {
         if (repository.findByCpf(client.getCpf()) != null){
