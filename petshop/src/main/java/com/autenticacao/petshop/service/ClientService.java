@@ -35,10 +35,10 @@ public class ClientService implements IService<Client> {
     @Override
     public Client save(Client client) {
         if (repository.findByCpf(client.getCpf()) != null){
-            throw new ResourceAlreadyExistsException("Já existe um cliente com esse CPF");
+            throw new ResourceAlreadyExistsException("Já existe um usuário com esse CPF");
         }
         if (repository.findByPhone(client.getPhone()) != null){
-            throw new ResourceAlreadyExistsException("Já existe um cliente com esse número de telefone");
+            throw new ResourceAlreadyExistsException("Já existe um usuário com esse número de telefone");
         }
         return repository.save(client);
     }
@@ -46,10 +46,10 @@ public class ClientService implements IService<Client> {
     @Override
     public Client update(Client newClient, Long id) {
         if (repository.findByCpf(newClient.getCpf()) != null){
-            throw new ResourceAlreadyExistsException("Já existe um cliente com esse CPF");
+            throw new ResourceAlreadyExistsException("Já existe um usuário com esse CPF");
         }
         if (repository.findByPhone(newClient.getPhone()) != null){
-            throw new ResourceAlreadyExistsException("Já existe um cliente com esse número de telefone");
+            throw new ResourceAlreadyExistsException("Já existe um usuário com esse número de telefone");
         }
 
         Client client = findById(id);

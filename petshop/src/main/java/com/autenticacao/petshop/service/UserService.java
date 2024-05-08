@@ -40,7 +40,7 @@ public class UserService implements IService<User> {
 
             if (repository.findByEmail(user.getEmail()) != null) {
 
-                throw new ResourceAlreadyExistsException("Esse usuário já existe");
+                throw new ResourceAlreadyExistsException("Já existe um usuário com esse e-mail");
             }
 
             return repository.save(user);
