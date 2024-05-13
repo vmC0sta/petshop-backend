@@ -13,6 +13,10 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String email;
+
+    private String password;
+
     @Column(nullable = false)
     private String name;
 

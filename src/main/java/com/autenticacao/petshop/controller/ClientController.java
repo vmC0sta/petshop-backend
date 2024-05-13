@@ -1,6 +1,8 @@
 package com.autenticacao.petshop.controller;
 
+import com.autenticacao.petshop.entity.address.Address;
 import com.autenticacao.petshop.entity.client.Client;
+import com.autenticacao.petshop.entity.client.CreateClientRequest;
 import com.autenticacao.petshop.service.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -43,5 +45,11 @@ public class ClientController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<Object> createClientWithAddress(@RequestBody CreateClientRequest createClientRequest) {
+        Client client = createClientRequest.getClient();
+        Address address = createClientRequest.getAddress();
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.createClientWithAddress(client, address));
+    }
 
 }
