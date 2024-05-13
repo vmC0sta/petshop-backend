@@ -30,7 +30,6 @@ public class Address {
     @Column(nullable = false)
     private String state;
 
-    @PrimaryKeyJoinColumn
     @OneToOne
     private Client client;
 
