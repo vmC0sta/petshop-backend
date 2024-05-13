@@ -1,5 +1,6 @@
 package com.autenticacao.petshop.service;
 
+import com.autenticacao.petshop.entity.address.Address;
 import com.autenticacao.petshop.entity.client.Client;
 import com.autenticacao.petshop.exception.ResourceAlreadyExistsException;
 import com.autenticacao.petshop.exception.ResourceNotFoundException;
@@ -18,6 +19,7 @@ public class ClientService implements IService<Client> {
 
     private final ClientRepository repository;
     private final ModelMapper mapper;
+    private final AddressService addressService;
 
     @Override
     public List<Client> findAll() {
@@ -39,6 +41,9 @@ public class ClientService implements IService<Client> {
         if (repository.findByPhone(client.getPhone()) != null){
             throw new ResourceAlreadyExistsException("Já existe um usuário com esse número de telefone");
         }
+        if (repository.findByEmail(client.getEmail()) != null){
+            throw new ResourceAlreadyExistsException("Já existe um usuário com esse email");
+        }
         return repository.save(client);
     }
 
@@ -49,6 +54,9 @@ public class ClientService implements IService<Client> {
         }
         if (repository.findByPhone(newClient.getPhone()) != null){
             throw new ResourceAlreadyExistsException("Já existe um usuário com esse número de telefone");
+        }
+        if (repository.findByEmail(newClient.getEmail()) != null){
+            throw new ResourceAlreadyExistsException("Já existe um usuário com esse email");
         }
 
         Client client = findById(id);
@@ -62,4 +70,12 @@ public class ClientService implements IService<Client> {
     public void delete(Long id) {
         repository.delete(findById(id));
     }
+
+    @Transactional
+    public Client createClientWithAddress(Client client, Address address) {
+        addressService.save(address);
+        client.setAddress(address);
+        return save(client);
+    }
+
 }
