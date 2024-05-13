@@ -1,7 +1,6 @@
 package com.autenticacao.petshop.service;
 
 import com.autenticacao.petshop.entity.client.Client;
-import com.autenticacao.petshop.entity.user.User;
 import com.autenticacao.petshop.exception.ResourceAlreadyExistsException;
 import com.autenticacao.petshop.exception.ResourceNotFoundException;
 import com.autenticacao.petshop.repository.ClientRepository;

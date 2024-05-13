@@ -1,11 +1,9 @@
 package com.autenticacao.petshop.entity.client;
 
 import com.autenticacao.petshop.entity.address.Address;
-import com.autenticacao.petshop.entity.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
 
 @Entity
 @Data

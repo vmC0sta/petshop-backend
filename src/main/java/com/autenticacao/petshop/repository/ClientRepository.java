@@ -4,7 +4,7 @@ import com.autenticacao.petshop.entity.client.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClientRepository extends JpaRepository<Client, Long> {
-        public Client findByName(String name);
-        public Client findByCpf(String cpf);
-        public Client findByPhone(String phone);
+         Client findByName(String name);
+         Client findByCpf(String cpf);
+         Client findByPhone(String phone);
 }
