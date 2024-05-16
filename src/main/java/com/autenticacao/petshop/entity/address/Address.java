@@ -1,6 +1,5 @@
 package com.autenticacao.petshop.entity.address;
 
-import com.autenticacao.petshop.entity.client.Client;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -29,8 +28,5 @@ public class Address {
 
     @Column(nullable = false)
     private String state;
-
-    @OneToOne
-    private Client client;
 
 }
