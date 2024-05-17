@@ -1,8 +1,6 @@
 package com.autenticacao.petshop.entity.client;
 
-import lombok.Getter;
 
-@Getter
 
 public enum ClientRole {
     ADMIN("admin"),
